@@ -176,6 +176,286 @@ GET app_logs/_search
 {"query": {"match_all": {}}}
 
 
+GET app_logs/_search
+{
+  "query": { "match_all": {} }
+}
+
+GET app_logs/_search
+{
+  "size": 2,
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "desc"
+      }
+    }
+  ],
+  "_source": [ "@timestamp", "level", "message"],
+  "query": { "match_all": {}}
+}
+
+GET app_logs/_search 
+{
+  "query": {
+    "range": {
+      "@timestamp": {
+        "gte": "2026-10-01",
+        "lte": "2026-10-31"
+      }
+    }
+  }
+}
+GET app_logs/_search
+{
+  "query": {
+    "range": {
+      "@timestamp": {
+        "gte": "now-10m"
+      }
+    }
+  }
+}
+
+GET app_logs/_search
+{
+  "query": {
+    "range":{
+      "@timestamp": {
+        "gte": "now-10m",
+        "lte": "now"
+      }
+    }
+  }
+}
+
+GET app_logs/_search
+{
+  "query":{"range":{ "@timestamp": { "lte": "now" } }
+  }
+}
+
+GET app_logs/_search
+{
+  "query": {
+    "range":{
+      "@timestamp": {
+        "gte":"2026-10-15T10:00:00Z",
+        "lte":"2026-10-15T10:59:59Z"
+      }
+    }
+  }
+}
+
+
+GET app_logs/_search
+{
+  "size": 0,
+  "aggs": {
+    "logs_per_level":{
+      "terms": {"field": "level"}
+  } }
+}
+
+GET app_logs/_search
+{
+  "size":0,
+  "aggs": {
+    "avg_status": {"avg": { "field": "status_code"} },
+      "max_status": {"max": {"field":"status_code"} }
+    }
+  }
+
+
+
+GET app_logs/_search
+{
+  "query": { "range": { "@timestamp": { "lte": "now" } } }
+}
+
+
+
+
+GET app_logs/_search
+{
+  "query": {
+    "range": {
+      "@timestamp": { "lte": "now" }
+    }
+  },
+  "aggs": {
+    "logs_per_level": {
+      "terms": { "field": "level" }
+    }
+  }
+}
+
+GET app_logs/_search
+{
+  "size": 0,
+  "query": {
+    "range": {
+      "@timestamp": { "lte": "now" }
+    }
+  },
+  "aggs": {
+    "logs_per_level": {
+      "terms": { "field": "level" }
+    }
+  }
+}
+
+
+GET app_logs/_search
+{
+  "size": 0,
+  "aggs": {
+    "logs_per_month": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "month"
+      }
+    }
+  }
+}
+
+
+
+GET app_logs/_search
+{
+  "query": {"terms": {
+    "level": [
+      "abc",
+      "warn"
+    ]
+  }}
+}
+
+
+GET app_logs/_search
+{
+  "query": {
+    "exists": {
+      "field": 
+        "status_code"
+    }
+  }
+}
+
+
+GET app_logs/_search
+{
+  "query": {"match_phrase": {
+    "message": "database received"
+  }}
+}
+
+GET app_logs/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "payment",
+      "fields": ["service", "message"]
+    }
+  }
+}
+
+
+GET app_logs/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"term": {
+          "service": "payment"
+        }}
+      ],
+      "filter": [
+        {"bool": {
+          "should": [
+            {"term": {"level": "error"}},
+            {"range": {"status_code": {"gte" : 500}}}]
+            
+        }}
+      ]
+    }
+  }
+}
+
+GET app_logs/_search
+{
+  "query": {
+    "bool": {
+      "filter": [ { "range": { "status_code": { "gte": 300 } } } ],
+      "should": [ { "term": { "level": "ERROR" } } ]
+    }
+  }
+}
+
+GET app_logs/_search
+{
+  "query": {
+    "bool": {
+      "filter": [ { "range": { "status_code": { "gte": 300 } } } ],
+      "should": [ { "term": { "level": "ERROR" } } ],
+      "minimum_should_match": 1
+    }
+  }
+}
+
+
+
+GET app_logs/_search
+{
+  "query": {"match": {"message": "database"}},
+  "highlight": {
+    "fields": {"message":{}},
+  "pre_tags": ["<b>"],
+    "post_tags": ["</b>"]
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
