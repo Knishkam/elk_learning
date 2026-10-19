@@ -7,7 +7,7 @@ res = es.search(index="app_logs", query={
 ]
     }
 },
-size=10,
+size=2,
 )
 print("total:", res["hits"]["total"]["value"])
 for hit in res["hits"]["hits"]:
