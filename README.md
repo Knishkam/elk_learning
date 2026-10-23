@@ -52,7 +52,16 @@ Four panels: total errors, logs over time, logs per service, recent logs table.
 `bool` (must, filter, should, must_not), `highlight`, `sort`, `search_after`,
 `terms` and `date_histogram` aggregations, Bulk API.
 
-![Dev Tools](screenshots/devtools.png)
+## Screenshots
+
+### Full Dashboard
+![Full Dashboard](Screenshots/Full dashboard.PNG)
+
+### Logs Over Time
+![Logs Over Time](Screenshots/Logs over time.PNG)
+
+### Dev Tool Query
+![Dev Tool Query](Screenshots/dev tool query.PNG)
 
 ## What I learned
 - (write 3-4 lines in your own words, for example: keyword fields are
