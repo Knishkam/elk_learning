@@ -416,7 +416,34 @@ GET app_logs/_search
 }
 
 
+GET app_logs/_count
 
+GET app_logs/_search
+{
+  "size": 5,
+  "sort": [
+      {"@timestamp": "desc"},
+      {"_doc": "asc"}
+      ],
+    "query": {
+      "match_all":{}
+    }
+}
+  
+GET app_logs/_search
+{
+  "size": 20,
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "desc"
+      }
+    },
+    {"_doc": "asc"}
+  ],
+  "search_after": [1792575464538,92],
+  "query": {"match_all": {}}
+}
 
 
 
