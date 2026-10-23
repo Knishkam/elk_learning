@@ -3,7 +3,7 @@
 A small log monitoring project. I generated synthetic application logs with
 Python, stored them in Elasticsearch, and built a monitoring dashboard in Kibana.
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](Screenshots/Full dashboard.PNG)
 
 ## Stack
 - Elasticsearch 8.15.0 and Kibana 8.15.0 (Docker Compose)
