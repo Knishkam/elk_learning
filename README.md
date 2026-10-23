@@ -64,8 +64,9 @@ Four panels: total errors, logs over time, logs per service, recent logs table.
 ![Dev Tool Query](Screenshots/dev tool query.PNG)
 
 ## What I learned
-- (write 3-4 lines in your own words, for example: keyword fields are
-  case-sensitive; why define mapping first; how the now-15m window works)
+- Recently i practiced search after which was quite intresting .
+- I practiced lot of DSL quries and diffrent type of graphs . 
+
 
 ## Next
 Logstash pipeline, Kibana alert rules, ILM
