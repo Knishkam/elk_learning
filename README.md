@@ -66,6 +66,7 @@ Four panels: total errors, logs over time, logs per service, recent logs table.
 ## What I learned
 - Recently i practiced search after which was quite intresting .
 - I practiced lot of DSL quries and diffrent type of graphs . 
+- I learnt alot and practiced lots of queries which is in the above library.
 
 
 ## Next
