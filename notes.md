@@ -70,10 +70,10 @@ A `docker-compose.yml` is the recipe that says which boxes to run.
   and `.keyword` for every string (wasteful).
 
 ### In my own words
-- What `text` does: It is used for exact search .
-- What `keyword` does: It is used for exact save.
-- Why `term` for "rahul" did not find "RAHUL": Because it will search for exact with its attributes that is case sensitive.
-- Why `level` should be a keyword in log monitoring: level (warn , pass, fail ) should be case sensitive  .
+- What `text` does: It is used for exact search (it converted into lowercase) and it is casesensitive.
+- What `keyword` does: It is used for exact save and it is case sensitive.
+- Why `term` for "rahul" did not find "RAHUL": while searching it will search RAHUL but as its attributes it saves in lowercase.
+- Why `level` should be a keyword in log monitoring: level (warn , pass, fail ) should be case sensitive  and we need exact search .
 
 ---
 
