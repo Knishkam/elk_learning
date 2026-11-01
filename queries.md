@@ -446,11 +446,49 @@ GET app_logs/_search
 }
 
 
+// logstash 
+GET logstash_app_logs/_count
+
+GET logstash_app_logs/_search
+{
+  "size": 0,
+  "aggs": {
+    "per_msg": { "terms": {"field": "msg.keyword"
+  }}}
+}
+
+DELETE logstash_app_logs
+
+GET logstash_app_logs/_count
+
+GET logstash_app_logs/_mapping
 
 
 
+PUT _index_template/logstash_app_logs_template
+{
+  "index_patterns": ["logstash_app_logs"],
+  "template":{
+    "mappings":{
+      "properties":{
+        "@timestamp": {"type": "date"},
+        "level": {"type": "keyword"},
+        "msg": {"type": "text"},
+        "service":{"type": "keyword"}
+          
+        }
+    }
+  }
+}
 
+DELETE logstash_app_logs
 
+GET logstash_app_logs/_mapping
+GET logstash_app_logs/_search
+{
+  "size": 0,
+  "aggs": { "per_level": { "terms": { "field": "level" } } }
+}
 
 
 
