@@ -490,7 +490,22 @@ GET logstash_app_logs/_search
   "aggs": { "per_level": { "terms": { "field": "level" } } }
 }
 
-
+PUT _index_template/logstash_app_logs_template
+{
+  "index_patterns": ["logstash_app_logs"],
+  "template": {
+    "mappings": {
+      "properties": {
+        "@timestamp":{"type":"date"},
+        "level":{"type":"keyword"},
+        "service": {"type": "keyword"},
+        "msg": {
+          "type": "text",
+          "fields":{"keyword":{"type":"keyword"}}
+        }
+  }
+    }}
+}
 
 
 

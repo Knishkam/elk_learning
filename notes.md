@@ -63,3 +63,7 @@ Field ka naam galat (level.keyword jahan exist nahi karta)	200	Successful, par k
 1. "querry" (spelling galat)	         400	parsing_exception ya x_content_parse_exception, unknown query jaisa message
 2. logstash_app_lgs (index naam galat)	 404	index_not_found_exception, no such index
 3. level.keyword (field naam galat)	     200, successful	Error nahi, buckets khaal
+
+index template :- While we are mapping we write msg :{"type": "text",
+"fields":{"keyword":{"type":"keyword"}
+because we need to search any specific data then we can use msg.keyword . 
