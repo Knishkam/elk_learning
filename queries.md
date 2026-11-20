@@ -610,7 +610,58 @@ GET _search
 }
 
 
+GET _cluster/health
 
+
+
+PUT _ilm/policy/logs_policy
+{
+  "policy": {
+    "phases": {
+      "hot": {
+        "actions": {"rollover": {"max_docs": 3 }}
+      },
+      "delete": {
+        "min_age": "1m",
+        "actions": {
+          "delete": {}
+        }
+      }
+    }
+  }
+}
+
+
+
+PUT _index_template/logs_template
+{
+  "index_patterns": ["logs"],
+  "data_stream":{},
+  "template": {
+    "settings": { "index.lifecycle.name": "demo_logs_policy"},
+    "mappings": {
+      "properties": {
+        "@timestamp": {"type": "date"},
+        "level": {"type": "keyword"},
+        "msg": {"type": "text"}
+      }
+    }
+      
+    }
+  }
+
+POST logs/_doc
+{ "@timestamp": "2026-11-04T10:00:00Z", "level": "ERROR", "msg": "test 1" }
+
+
+GET _data_stream/logs
+GET demo-logs/_ilm/explain
+
+
+DELETE _data_stream/logs
+PUT _cluster/settings
+{ "persistent": {"indices.lifecycle.poll_interval": null }
+}
 
 
 
