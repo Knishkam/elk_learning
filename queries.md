@@ -507,6 +507,111 @@ PUT _index_template/logstash_app_logs_template
     }}
 }
 
+GET logstash_app_logs/_count
+
+
+GET logstash_app_logs/_search
+{
+  "size": 20
+}
+
+GET logstash_app_logs/_mapping
+
+GET logstash_app_logs/_search
+{
+  "size": 0,
+  "aggs": {
+    "failure_tags": {
+      "terms": {
+        "field": "tags.keyword",
+        "missing": "NO_TAGS"
+      }
+    },
+    "by_message": {
+      "terms": {
+        "field": "message.keyword",
+        "size": 10
+      }
+    }
+  }
+}
+GET logstash_app_logs/_search
+{
+  "size": 0,
+  "aggs": {
+    "filure_tags": {
+      "terms": {
+        "field": "tags.keyword",
+        "missing": "NO_TAGS"
+      }
+    },
+    "by_message": {
+      "terms": {
+        "field": "message.keyword",
+        "size": 10
+      }
+    }
+  }
+}
+
+GET logstash_app_logs/_search 
+{
+  "size": 5,
+  "_source": ["tags", "level", "status_code", "message"]
+}
+
+GET logstash_app_logs/_mapping
+
+GET logstash_app_logs/_search
+{
+  "size": 3
+}
+
+
+
+GET logstash_app_logs/_search
+{
+  "size": 0,
+  "aggs": {
+    "by_type": { "terms": { "field": "type.keyword"}},
+    "by_level": { "terms": { "field": "level" }}
+  }
+}
+
+
+
+
+GET logstash_app_logs/_search
+{
+  "query": {
+    
+    "terms": {
+      "tags.keyword": [
+        "_grokparsefailure", "_jsonparsefailure", "_dateparsefailure"
+      ]
+    }
+  }
+}
+
+
+POST app_logs/_pit?keep_alive=1m
+
+
+
+POST app_logs/_pit?keep_alive=5m
+
+GET _search
+{
+  "size": 3,
+  "query": { "match_all": {} },
+  "pit": { "id": "<>", "keep_alive": "1m" },
+  "sort": [ { "@timestamp": "desc" } ],
+  "search_after": [********, *]
+}
+
+
+
+
 
 
 
