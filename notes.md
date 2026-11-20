@@ -88,3 +88,10 @@ search_after :- To count from last seen.
 Point in Time (PIT):- To take a Frozen snapshot of the index.
   
 benefit of breaking function:- Without going live of ES, we can Test and identify the bug.
+
+
+ILM :- index life cycle managment::- It is used to manage indices  , So once policy defined it works automatically (Hot -> Warm->cold-->frozen/Delete).
+Roll Over::- Once log is full or reached max set no then automatically it will create the new one. 
+Diff between normal and stream data :-  Stream data - It is for time series logs in which we write only name and hidden backing indices are coming and getting automatically roll over.
+                                    :- Normal - Normal indicies are single indices and updation/edit gets easy because we can do it manually.
+
