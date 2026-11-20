@@ -1,0 +1,11 @@
+{"ts":"2026-11-03T10:40:00Z","level":"ERROR","service":"api","status_code":500,"msg":"upstream failed"}
+{"ts":"2026-11-03T10:41:00Z","level":"INFO","service":"auth","status_code":200,"msg":"login ok"}
+{"ts":"2026-11-03T10:42:00Z","level":"WARN","service":"db","status_code":503,"msg":"database connection slow"}
+{"ts":"2026-11-03T10:43:00Z","level":"ERROR","service":"api","status_code":500,"msg":"upstream failed"}
+{"ts":"2026-11-03T10:44:00Z","level":"INFO","service":"auth","status_code":200,"msg":"login ok"}
+{"ts":"2026-11-03T10:45:00Z","level":"WARN","service":"db","status_code":503,"msg":"database connection slow"}
+{"ts":"2026-11-03T10:46:00Z","level":"ERROR","service":"api","status_code":500,"msg":"upstream failed"}
+{"ts":"2026-11-03T10:47:00Z","level":"INFO","service":"auth","status_code":200,"msg":"login ok"}
+{"ts":"2026-11-03T10:48:00Z","level":"WARN","service":"db","status_code":503,"msg":"database connection slow"}
+{"ts":"2026-11-03T10:49:00Z","level":"ERROR","service":"api","status_code":500,"msg":"upstream failed"}
+{"ts":"2026-11-03T11:00:00Z","level":"ERROR","service":"payment","status_code":500,"msg":"card declined"}

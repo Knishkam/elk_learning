@@ -67,3 +67,24 @@ Field ka naam galat (level.keyword jahan exist nahi karta)	200	Successful, par k
 index template :- While we are mapping we write msg :{"type": "text",
 "fields":{"keyword":{"type":"keyword"}
 because we need to search any specific data then we can use msg.keyword . 
+
+LOGSTASH :- dissect vs grok 
+           dissect is cpu freindly and if log template is fixed then we will use dissect only.
+           grok uses regex( regular expression) that means , if coming data template is not set or fixed  then we use grok because it manages the change in templates.
+      ::- since db bookmark
+          it controls the reading of data , because it restricts the duplicates. 
+          If it is mounted on some where like  volume then when we will restart container then  data will be same . 
+    : -  IF error is 404 then it means asking endpoints or index or documents are not available.
+    :- If error is 400 then it means syntax is wrong .
+    :- if erro is 200 that means everything is correct . 
+
+POV (point of view):-
+
+    app.logs (text) --> grok --\
+                             +--> date --> Elasticsearch (template) --> Kibana
+    app.jsonl (JSON) --> json --/
+
+search_after :- To count from last seen.
+Point in Time (PIT):- To take a Frozen snapshot of the index.
+  
+benefit of breaking function:- Without going live of ES, we can Test and identify the bug.

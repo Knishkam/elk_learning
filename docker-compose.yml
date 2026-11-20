@@ -24,6 +24,7 @@ services:
     volumes:
       - ./logstash/test.conf:/usr/share/logstash/pipeline/test.conf:ro
       - ./logstash/data:/usr/share/logstash/logs-in:ro
+      - ./logstash/sincedb:/usr/share/logstash/sincedb:rw
     ports:
       - "5044:5044"
     depends_on:
